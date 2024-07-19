@@ -1,0 +1,55 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+    <div class="media-body">
+          <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+              <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+              {% if object.author == user %}
+              <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1"  href="{% url 'post-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1"  href="{% url 'post-delete' object.id %}">Delete</a>
+              </div>
+              {% endif %}
+          </div>
+          <h2 class="article-title">{{ object.title }}</a></h2>
+          <p class="article-content">{{ object.content }}</p>
+
+          <!-- Like button -->
+          <hr>
+          {% if user.is_authenticated %}
+            <form action="{% url 'blogpost_like' post.id %}" method="POST">
+              {% csrf_token %}
+
+              {% if post_is_liked %}
+              <button type="submit" name="blogpost_id" value="{{post.id}}" class="btn btn-info">Unlike</button>
+              {% else %}
+              <button type="submit" name="blogpost_id" value="{{post.id}}" class="btn btn-info">Like</button>
+              {% endif %}
+            </form>
+          {% else %}
+            <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
+          {% endif %}
+          <strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
+          
+          <!-- comments -->
+          <h3>Comments</h3>
+          {% if user.is_authenticated %}
+          <a href="{% url 'add-comment' post.id %}">Add Comment</a>
+          <hr>
+          <ul>  
+            {% for comment in post.comments.all %}
+              <li> <strong>{{ comment.name }} ({{ comment.created_at }})</strong></li>
+              {{ comment.body }} 
+              <hr>
+            {% endfor %}
+          </ul>
+          {% else %}
+            <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to Comment this article!</a><br>
+          {% endif %}
+
+
+    </div>
+  </article>
+{% endblock content %}

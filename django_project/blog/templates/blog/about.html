@@ -1,0 +1,63 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .hero {
+            background-image: url("images/bakery.jpg");  background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .about-me {
+            margin-top: 50px;
+        }
+        .about-me img {
+            width: 200px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    </header>
+
+    <div class="hero">
+        <h1>Welcome to We Blog</h1>
+    </div>
+
+    <div class="about-me">
+        <h2>About Me</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend et dui eu sodales. Vivamus dictum a enim sed dignissim. Etiam tincidunt turpis arcu, et aliquam elit accumsan sed. Suspendisse potenti. Phasellus eu augue tellus. Duis condimentum laoreet est, ut pulvinar metus tincidunt eu. Praesent dapibus ultrices lacus, vitae finibus quam facilisis ac.</p>
+    </div>
+
+    <section>
+        <h2>What I Blog About</h2>
+        <p>Our blog is a vibrant platform that celebrates the diversity of human experiences and passions. We believe in the power of unrestricted expression, where individuals can share their thoughts, stories, and insights without boundaries. By fostering inclusivity and creativity, we invite a wide range of topics and perspectives, from personal narratives to societal reflections. Our community-driven approach attracts a diverse audience, drawn to the richness and unpredictability of our content. Whether it's travel adventures, culinary explorations, philosophical ponderings, or technological innovations, our platform offers endless possibilities for exploration. We empower contributors to delve into their interests and share their unique perspectives with a global audience. Ultimately, our blog serves as a dynamic hub for the exchange of ideas, connecting individuals and inspiring conversations that spark creativity and foster deeper understanding.</p>
+    </section>
+    <section>
+        <h2>Let's Connect!</h2>
+        <p>I'd love to hear from you! Feel free to leave a comment on a post or follow me on social media:</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 We Blog</p>
+    </footer>
+
+{% endblock content %}
+
+
